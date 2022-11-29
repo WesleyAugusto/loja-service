@@ -7,10 +7,10 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
 
 @Controller("/vendas")
-class VendaController(private val vendaService: VendaService ) {
+class VendaController(private val vendaService: VendaService) {
 
     @Post
-    fun realizarVenda(@Body vendaInput: VendaInput){
+    fun realizarVenda(@Body vendaInput: VendaInput) {
         vendaService.realizarVenda(vendaInput)
     }
 }
