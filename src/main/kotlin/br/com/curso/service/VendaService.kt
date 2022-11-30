@@ -9,10 +9,10 @@ import java.time.LocalDate
 
 
 @Singleton
-class VendaService(private val veiculoHttp: VeiculoHttp) {
+class VendaService(private val veiculoService: VeiculoService) {
 
     fun realizarVenda(vendaInput: VendaInput) {
-        val veiculo = veiculoHttp.findById(vendaInput.veiculo)
+        val veiculo = veiculoService.getVeiculo(vendaInput.veiculo)
         val parcelas: ArrayList<Parcelas> = arrayListOf()
         val valorParcelas = vendaInput.valor.divide(vendaInput.quantidadedeParcelas.toBigDecimal())
         var dataVenciemto = LocalDate.now().plusMonths(1)
@@ -23,6 +23,6 @@ class VendaService(private val veiculoHttp: VeiculoHttp) {
             dataVenciemto = dataVenciemto.plusMonths(1)
         }
         val venda = Vendas(vendaInput.cliente, veiculo, vendaInput, parcelas)
-
+            println(venda)
     }
 }
