@@ -10,3 +10,8 @@ netty:
 kafka:
   booststrap:
     servers: localhost:9092
+consul:
+  client:
+    registration:
+      enable: true
+    defaltZone: "localhost:8500"
